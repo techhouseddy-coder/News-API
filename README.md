@@ -30,8 +30,8 @@ project-root/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/news-api-proxy.git
-cd news-api-proxy
+git clone https://github.com/mahendrancse88/News-API.git
+cd News-API
 ```
 
 ### 2. Install dependencies
@@ -114,4 +114,4 @@ GET http://localhost:5000/api/news/author?author=bbc
 ---
 
 ## 👨‍💻 Author
-Your Name - [GitHub Profile](https://github.com/your-username)
+Your Name - [Mahendran Ponniah](https://github.com/mahendrancse88)
