@@ -50,3 +50,45 @@ async function findByAuthor(author) {
 }
 
 module.exports = { getNews, searchByKeyword, findByTitle, findByAuthor };
+// ... ရှေ့ပိုင်း Code တွေ ...
+const axios = require('axios'); // axios ကို သုံးဖို့ ထည့်
+
+// ဒါက ဘာသာပြန်မယ့် Function
+async function translateToBurmese(text) {
+  // ဒီနေရာမှာ ဘာသာပြန်တဲ့ API ကို ခေါ်သုံးရမယ်။
+  // ဥပမာ - MyAnimeGPT (မြန်မာ AI) ကို သုံးလို့ရတယ်။
+  // ဒါက နမူနာ Code ပဲ။ တကယ့် API အတိုင်း ပြင်ရမယ်။
+  try {
+    // ဒီ API လိပ်စာက ဥပမာသာဖြစ်တယ်။ တကယ့် API လိပ်စာ ထည့်ရမယ်။
+    const response = await axios.post('https://api.myanimegpt.com/translate', { 
+      text: text,
+      target_lang: 'my'
+    });
+    return response.data.translated_text; 
+  } catch (error) {
+    console.error("ဘာသာပြန်ရာမှာ အဆင်မပြေဘူး:", error);
+    return text; // အဆင်မပြေရင် မူရင်းစာသားအတိုင်း ပြန်ပို့
+  }
+}
+
+// သတင်းတွေ ရှာပြီး ပြန်တဲ့ Function ကို ပြင်မယ်
+async function fetchNews() {
+    // ... သတင်းတွေ ရှာတဲ့ Code ...
+    const articles = response.data.articles; 
+    const translatedArticles = [];
+
+    for (let article of articles) {
+        const translatedTitle = await translateToBurmese(article.title);
+        const translatedDescription = await translateToBurmese(article.description || '');
+        
+        translatedArticles.push({
+            title: translatedTitle,
+            description: translatedDescription,
+            // ... တခြား အချက်အလက်တွေ ...
+        });
+    }
+    
+    return translatedArticles;
+}
+
+// ... ကျန်တဲ့ Code တွေ ...
